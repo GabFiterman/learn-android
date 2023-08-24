@@ -1,6 +1,8 @@
 import {
   Button,
   CircleButton,
+  EmojiPicker,
+  EmojiList,
   IconButton,
   Image,
 } from "./src/components";
@@ -13,6 +15,8 @@ export default function App() {
   const PlaceholderImage = require("./assets/images/background-image.png");
   const [selectedImage, setSelectedImage] = useState(null);
   const [showAppOptions, setShowAppOptions] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [pickedEmoji, setPickedEmoji] = useState(null);
 
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -33,6 +37,15 @@ export default function App() {
     setShowAppOptions(false);
   };
 
+  const onAddSticker = () => {
+    setIsModalVisible(true);
+  };
+
+  const onModalClose = () => {
+    setIsModalVisible(false);
+  };
+
+  const onSaveImageAsync = async () => {};
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -66,6 +79,9 @@ export default function App() {
           />
         </View>
       )}
+      <EmojiPicker isVisible={isModalVisible} onClose={onModalClose}>
+        <EmojiList onSelect={setPickedEmoji} onCloseModal={onModalClose} />
+      </EmojiPicker>
       <StatusBar style="auto" />
     </View>
   );
@@ -86,11 +102,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   optionsContainer: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 80,
   },
   optionsRow: {
-    alignItems: 'center',
-    flexDirection: 'row',
+    alignItems: "center",
+    flexDirection: "row",
   },
 });
