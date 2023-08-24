@@ -1,11 +1,13 @@
+import {
+  Button,
+  CircleButton,
+  IconButton,
+  Image,
+} from "./src/components";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
 import { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
-import Button from "./src/components/Button.jsx";
-import CircleButton from "./src/components/CircleButton";
-import IconButton from "./src/components/IconButton";
-import Image from "./src/components/Image.jsx";
 
 export default function App() {
   const PlaceholderImage = require("./assets/images/background-image.png");
