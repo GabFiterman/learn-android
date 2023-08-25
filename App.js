@@ -7,13 +7,14 @@ import {
   IconButton,
   Image,
 } from "./src/components";
+import { captureRef } from "react-native-view-shot";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { StatusBar } from 'expo-status-bar';
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View, Platform } from "react-native";
 import { useState, useRef } from "react";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { captureRef } from "react-native-view-shot";
-import * as MediaLibrary from "expo-media-library";
 import * as ImagePicker from "expo-image-picker";
+import * as MediaLibrary from "expo-media-library";
 import domtoimage from "dom-to-image";
 
 export default function App() {
@@ -127,7 +128,7 @@ export default function App() {
       <EmojiPicker isVisible={isModalVisible} onClose={onModalClose}>
         <EmojiList onSelect={setPickedEmoji} onCloseModal={onModalClose} />
       </EmojiPicker>
-      <StatusBar style="auto" />
+      <StatusBar style="light" />
     </GestureHandlerRootView>
   );
 }
